@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  aster-operator:
+    build: .
+    container_name: aster-operator
+    restart: unless-stopped
+    volumes:
+      - ./logs:/app/logs
+      - ./aster-operator.db:/app/aster-operator.db
+      - ./.env:/app/.env
+    environment:
+      - PYTHONPATH=/app
+      - PYTHONUNBUFFERED=1
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    # Uncomment to run in background
+    # detach: true
