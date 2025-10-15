@@ -1,11 +1,11 @@
-# Aster Operator 🤖
+# Aster DEX Operator 🤖
 
 <div align="center">
   <img src="images/aster-dex.jpg" alt="ASTER DEX Trading Interface" width="800"/>
   <p><em>ASTER DEX Trading Interface - Where Aster Operator Executes Trades</em></p>
 </div>
 
-*Part of the [Algo Traders Club](https://algotradersclub.com) Operator Series*
+_Part of the [Algo Traders Club](https://algotradersclub.com) Operator Series_
 
 > "An operator is a crewmember who assists redpills in the Matrix by providing information, resources, and protection." - The Matrix
 
@@ -18,12 +18,14 @@ This is the **Aster Operator** - a delta-neutral trading bot for [Aster DEX](htt
 ## 🎯 What This Bot Does
 
 **Strategy**: Delta-Neutral Hold-and-Rotate
+
 - Opens equal LONG and SHORT positions (no directional bias)
 - Holds for 90+ minutes (10x holding time multiplier for points)
 - Rotates positions to generate volume while staying market-neutral
 - Targets: $15K daily volume, $200K weekly holding time equivalent
 
 **Why This Strategy?**
+
 1. **Low Risk**: Delta-neutral = protected from BTC price swings
 2. **High Points**: Volume + hold time = maximum Aster RH points
 3. **Educational**: Learn position management, risk controls, exchange APIs
@@ -48,6 +50,7 @@ By studying and running this bot, you'll learn:
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - Python 3.9+
 - Aster DEX account ([Sign up](https://asterdex.com))
 - Basic understanding of perpetual futures trading
@@ -56,12 +59,14 @@ By studying and running this bot, you'll learn:
 ### Installation
 
 1. **Clone the repo**
+
    ```bash
    git clone https://github.com/algotradersclub/aster-operator.git
    cd aster-operator
    ```
 
 2. **Install dependencies**
+
    ```bash
    # Using uv (recommended)
    uv sync
@@ -71,17 +76,20 @@ By studying and running this bot, you'll learn:
    ```
 
 3. **Configure environment**
+
    ```bash
    cp .env.example .env
    # Edit .env with your API keys
    ```
 
 4. **Initialize database**
+
    ```bash
    python -m aster_operator.database.db
    ```
 
 5. **Run the bot**
+
    ```bash
    # Using uv
    uv run python main.py
@@ -150,15 +158,18 @@ MAX_PNL_DRIFT_PCT=0.8       # Close if delta neutrality drifts >0.8%
 **Delta-neutral** = Your P&L doesn't change when price moves.
 
 Example:
+
 - BTC at $50,000
 - Open LONG: Buy 0.1 BTC
 - Open SHORT: Sell 0.1 BTC
 
 **Outcome:**
+
 - BTC up to $51,000? → LONG gains $100, SHORT loses $100 = Net $0
 - BTC down to $49,000? → LONG loses $100, SHORT gains $100 = Net $0
 
 **Why do this?**
+
 - You're not gambling on price direction
 - You earn reward points from volume + hold time
 - Risk is minimized to funding rate exposure (small)
@@ -197,16 +208,19 @@ aster-operator/
 ### Key Files to Study:
 
 1. **`strategy/delta_neutral.py`** - Start here
+
    - Read `run_cycle()` to understand the main loop (line 43)
    - See how positions are opened, held, and rotated
    - Notice the timing logic (90-minute holds)
 
 2. **`exchange/aster_client.py`** - Next
+
    - How we wrap the Aster SDK
    - Error handling patterns
    - Order placement functions (line 35)
 
 3. **`strategy/risk_manager.py`** - Then this
+
    - Position sizing calculations (line 45)
    - Risk limit checks (line 99)
    - Exposure management
@@ -218,18 +232,21 @@ aster-operator/
 ### Common Modifications:
 
 **Change the trading pair:**
+
 ```python
 # In .env
 TRADING_PAIRS=["ETHUSDT"]  # Trade ETH instead of BTC
 ```
 
 **Adjust hold time:**
+
 ```python
 # In .env
 POSITION_HOLD_TIME_MIN=120  # Hold for 2 hours instead of 90 min
 ```
 
 **Change position size:**
+
 ```python
 # In .env
 MAX_POSITION_SIZE_PCT=2.0   # Use 2% per position (more aggressive)
@@ -260,6 +277,7 @@ MAX_POSITION_SIZE_PCT=2.0   # Use 2% per position (more aggressive)
 ### Modify Risk Parameters
 
 Edit `strategy/risk_manager.py`:
+
 ```python
 def calculate_position_size(self, price: float) -> float:
     # Current formula (line 81):
@@ -331,6 +349,7 @@ with get_db() as db:
 This is an educational project for Algo Traders Club members. Contributions welcome!
 
 **Ways to contribute:**
+
 - 🐛 Bug fixes
 - 📚 Documentation improvements
 - 🎨 Code refactoring
@@ -338,6 +357,7 @@ This is an educational project for Algo Traders Club members. Contributions welc
 - 💡 Strategy improvements
 
 **Before submitting PRs:**
+
 1. Test on testnet
 2. Add comments explaining your changes
 3. Update documentation if needed
@@ -373,4 +393,4 @@ See [LICENSE](LICENSE) file for details.
 
 **Built with ❤️ by the Algo Traders Club community**
 
-*"There is no spoon. There are only operators."* 🥄🤖
+_"There is no spoon. There are only operators."_ 🥄🤖
