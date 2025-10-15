@@ -1,5 +1,10 @@
 # Aster Operator 🤖
 
+<div align="center">
+  <img src="images/aster-dex.jpg" alt="ASTER DEX Trading Interface" width="800"/>
+  <p><em>ASTER DEX Trading Interface - Where Aster Operator Executes Trades</em></p>
+</div>
+
 *Part of the [Algo Traders Club](https://algotradersclub.com) Operator Series*
 
 > "An operator is a crewmember who assists redpills in the Matrix by providing information, resources, and protection." - The Matrix
