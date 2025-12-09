@@ -425,7 +425,7 @@ class DeltaNeutralStrategy:
         # Example: 0.01 BTC → random between 0.0095 - 0.0105 BTC
         randomization_factor = random.uniform(0.95, 1.05)
         quantity = quantity * randomization_factor
-        quantity = round(quantity, 3)  # Round to 3 decimals for BTC
+        quantity = round(quantity, 3)  # Aster requires 3 decimals max for BTC
 
         logger.info(
             f"Position size: {quantity} {self.symbol[:3]} "

@@ -85,8 +85,8 @@ class RiskManager:
         quantity = max_notional / price
 
         # Round to reasonable precision
-        # BTC: 0.001 (3 decimals) is typical minimum on most exchanges
-        # Adjust this for other assets (ETH = 2 decimals, DOGE = 0 decimals, etc.)
+        # BTC: Aster requires 3 decimals for BTC
+        # Adjust this for other assets (ETH might use 2-3 decimals, altcoins vary)
         quantity = round(quantity, 3)
 
         logger.debug(
